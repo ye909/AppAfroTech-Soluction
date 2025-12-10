@@ -19,9 +19,11 @@ namespace UI
     /// </summary>
     public partial class Loguin : Window
     {
+        private Negocio.NRegistroUser InicioUser;
         public Loguin()
         {
             InitializeComponent();
+            InicioUser = new Negocio.NRegistroUser();
         }
 
         private void btnInicio_Click(object sender, RoutedEventArgs e)
@@ -39,19 +41,19 @@ namespace UI
                 Contraseña = txtContaseña.Text
             };
 
-            Negocio.NRegistroUser nRegistroUser = new Negocio.NRegistroUser();
-            nRegistroUser.validarUsuario(usuario);
+        
+            InicioUser.validarUsuario(usuario);
 
             bool exito = true;
 
             if (exito)
             {
-                MessageBox.Show("Inicio de sesión exitoso.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                // Aquí puedes abrir la ventana principal de la aplicación
+                MessageBox.Show("Inicio de sesión exitoso.");
+
             }
             else
             {
-                MessageBox.Show("Credenciales incorrectas. Inténtalo de nuevo.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Credenciales incorrectas. Inténtalo de nuevo.");
             }
 
         }
